@@ -5,9 +5,8 @@ namespace Algorithmes
 {
     public class BubbleSort<T>: AlgorithmesBase<T> where T : IComparable
     {
-        public override void Sort()
+        protected override void MakeSort()
         {
-            SwapCount = 0;
             var count = Items.Count;
 
             for (int j = 0; j < count; j++)

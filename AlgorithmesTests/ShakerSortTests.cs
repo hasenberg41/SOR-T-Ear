@@ -20,7 +20,7 @@ namespace Algorithmes.Tests
             var items = new List<int>();
             Random random = new Random();
 
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 10; i++)
                 items.Add(random.Next(0, 100));
 
             shaker.Items.AddRange(items);

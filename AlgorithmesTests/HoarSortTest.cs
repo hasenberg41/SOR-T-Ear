@@ -6,13 +6,13 @@ using System.Collections.Generic;
 namespace AlgorithmesTests
 {
     [TestClass]
-    public class InsertionSortTest
+    public class HoarSortTest
     {
         [TestMethod]
         public void SortTest()
         {
             // arrange
-            var insertion = new InsertionSort<int>();
+            var hoar = new HoarSort<int>();
 
             var items = new List<int>();
             Random random = new Random();
@@ -20,16 +20,16 @@ namespace AlgorithmesTests
             for (int i = 0; i < 10000; i++)
                 items.Add(random.Next(0, 100));
 
-            insertion.Items.AddRange(items);
+            hoar.Items.AddRange(items);
 
             // act
             items.Sort();
-            insertion.Sort();
+            hoar.Sort();
 
             // assert
             for (int i = 0; i < items.Count; i++)
             {
-                Assert.AreEqual(insertion.Items[i], items[i]);
+                Assert.AreEqual(hoar.Items[i], items[i]);
             }
         }
     }

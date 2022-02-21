@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AlgorithmesBase.cs" />
     <Compile Include="BubbleSort.cs" />
+    <Compile Include="HoarSort.cs" />
     <Compile Include="InsertionSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShakerSort.cs" />

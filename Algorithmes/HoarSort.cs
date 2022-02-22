@@ -10,43 +10,33 @@ namespace Algorithmes
     {
         protected override void MakeSort()
         {
-            Hoar(Items, 0, Items.Count);
+            Hoar(Items, 0, Items.Count - 1);
         }
 
         protected void Hoar(List<T> items, int low, int hight)
         {
-            int start = low, end = hight;
-            Partition(items, ref start, ref end);
-            
-            if (start < hight)
-                Hoar(items, start, hight);
-
-            if (end > low)
-                Hoar(items, low, end);         
+            if (low < hight)
+            {
+                int p = Partition(items, low, hight);
+                Hoar(items, low, p - 1);
+                Hoar(items, p + 1, hight);
+            }
         }
 
-        protected void Partition(List<T> items, ref int start, ref int end)
+        protected int Partition(List<T> items, int start, int end)
         {
-            var pivot = items[(start + end) / 2];
-            int i = start;
-            int j = end;
+            var pivot = start - 1;
 
-            do
+            for (int i = start; i < end; i++)
             {
-                while (items[i].CompareTo(pivot) == -1)
-                    i++;
-
-                while (items[j].CompareTo(pivot) == 1)
-                    j++;
-
-                if (i >= j)
+                if (items[i].CompareTo(items[end]) == -1)
                 {
-                    i++;
-                    j--;                    
+                    Swap(i, ++pivot);
                 }
-                Swap(i, j);
             }
-            while (i <= j);
+
+            Swap(++pivot, end);
+            return pivot;
         }
     }
 }

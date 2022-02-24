@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Algorithmes
 {
+    /// <summary>
+    /// Реализация шейкерной сортировки
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ShakerSort<T>: AlgorithmesBase<T> where T : IComparable
     {
-        protected override void MakeSort()
+        protected override void MakeSort() // Переопределение встроенной сортировки
         {
             int left = 0;
             int right = Items.Count - 1;
@@ -21,7 +25,7 @@ namespace Algorithmes
                 {
                     if (Items[i].CompareTo(Items[i+1]) > 0)
                     {
-                        ComparisonCount++;
+                        ComparisonCount++; // Счётчик количества изменений в массиве
 
                         Swap(i, i+1);
                     }
@@ -34,7 +38,7 @@ namespace Algorithmes
                 {
                     if (Items[i].CompareTo(Items[i-1]) < 0)
                     {
-                        ComparisonCount++;
+                        ComparisonCount++; // Счётчик количества изменений в массиве
 
                         Swap(i, i - 1);
                     }

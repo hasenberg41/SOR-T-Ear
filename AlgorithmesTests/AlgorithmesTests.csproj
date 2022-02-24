@@ -61,6 +61,7 @@
     <Compile Include="ShakerSortTests.cs" />
     <Compile Include="InsertionSortTest.cs" />
     <Compile Include="HoarSortTest.cs" />
+    <Compile Include="SimpleSortTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

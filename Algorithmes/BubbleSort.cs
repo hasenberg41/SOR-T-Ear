@@ -3,9 +3,12 @@ using System.Collections.Generic;
 
 namespace Algorithmes
 {
+    /// <summary>
+        /// Реализация сортировки пузырьком
+        /// </summary>
     public class BubbleSort<T>: AlgorithmesBase<T> where T : IComparable
     {
-        protected override void MakeSort()
+        protected override void MakeSort() // Переопределение встроенной сортировки
         {
             var count = Items.Count;
 
@@ -18,7 +21,7 @@ namespace Algorithmes
 
                     if (a.CompareTo(b) == 1)
                     {
-                        ComparisonCount++;
+                        ComparisonCount++; // Счётчик количества изменений в массиве
 
                         Swap(i, i + 1);
                     }

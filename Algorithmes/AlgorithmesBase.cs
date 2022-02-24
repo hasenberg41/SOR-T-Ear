@@ -4,24 +4,37 @@ using System.Diagnostics;
 
 namespace Algorithmes
 {
+    /// <summary>
+    /// Базовый класс для алгоритмов сортировки
+    /// </summary>
+    /// <typeparam name="T">любое числовое значение</typeparam>
     public class AlgorithmesBase<T> where T : IComparable
     {
-        public int SwapCount { get; protected set; } = 0;
-        public int ComparisonCount { get; protected set;} = 0;
+        #region Инициализация счётчиков
+        public int SwapCount { get; protected set; } = 0; // Счётчик, запоминающий количество вызовов метода Swap()
+        public int ComparisonCount { get; protected set;} = 0; // Счётчик, запоминающий количество изменений в массиве в момент сортировки для сравнения алгоритмов
+        #endregion
 
         public List<T> Items { get; set; } = new List<T>();
 
+        /// <summary>
+        /// Метод, меняющий местами два элемента списка
+        /// </summary>
+        /// <param name="posA"></param>
+        /// <param name="posB"></param>
         protected void Swap (int posA, int posB)
         {
             if (posA < Items.Count && posB < Items.Count)
             {
-                var temp = Items[posA];
-                Items[posA] = Items[posB];
-                Items[posB] = temp;
+                (Items[posB], Items[posA]) = (Items[posA], Items[posB]);
                 SwapCount++;
             }
         }
 
+        /// <summary>
+        /// Вызывает метод MakeSort(), возвращая временной промежуток его выполнения
+        /// </summary>
+        /// <returns></returns>
         public TimeSpan Sort()
         {
             SwapCount = 0;
@@ -33,6 +46,9 @@ namespace Algorithmes
             return timer.Elapsed;
         }
 
+        /// <summary>
+        /// Вызывает встроенную в .net сортировку, с возможностью переопределения
+        /// </summary>
         protected virtual void MakeSort()
         {
             Items.Sort();
